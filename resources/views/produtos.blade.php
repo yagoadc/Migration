@@ -1,4 +1,5 @@
 @extends('layouts.mylayout')
+
 @section('content')
     <div class="container">
         <table class="table table-striped">
@@ -13,7 +14,7 @@
             <tbody>
             @foreach($products as $p)
                 <tr id="{{"product".$p->product_id}}" class="row">
-                    <td class="col-xs-3">{{"Empresa".$loop->iteration}}{{--}}{{$p->provider->nome}}--}}</td>
+                    <td class="col-xs-3">{{"Empresa".$loop->iteration}}{{--{{$p->fornecedor->nome}}--}}</td>
                     <td class="col-xs-4">{{$p->nome}}</td>
                     <td class="col-xs-2">{{$p->estoque}}</td>
                     <td class="col-xs-3 text-right">{{"R$ ".$p->preco}}</td>
