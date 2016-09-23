@@ -1,5 +1,4 @@
 @extends('layouts.mylayout')
-{{--{{dd($products)}}--}}
 @section('content')
     <div class="container">
         <table class="table table-striped">
@@ -17,9 +16,6 @@
                     <td class="col-xs-3">{{"Empresa".$loop->iteration}}{{--}}{{$p->provider->nome}}--}}</td>
                     <td class="col-xs-4">{{$p->nome}}</td>
                     <td class="col-xs-2">{{$p->estoque}}</td>
-                    {{
-
-                    }}
                     <td class="col-xs-3 text-right">{{"R$ ".$p->preco}}</td>
                 </tr>
             @endforeach

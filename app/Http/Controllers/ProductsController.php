@@ -16,13 +16,30 @@ class ProductsController extends Controller
         $products = Product::all();
 
         foreach($products as $p){
-            //var_dump($p);
-            $str_tokens = explode('.',strval($p->preco));
-            if(strlen($str_tokens[1]) == 1){
-                $str_tokens[1] = $str_tokens[1]."0";
+
+
+
+            if($p->preco){
+                if(gettype($p->preco) == 'integer'){
+                    $p->preco = $p->preco.',00';
+                }
+
+                $str_tokens = explode('.',strval($p->preco));
+
+                if(count($str_tokens) < 2){
+                    array_push($str_tokens,"00");
+                }elseif(strlen($str_tokens[1]) == 1){
+                    $str_tokens[1] = $str_tokens[1]."0";
+                }
+
+                $preco_format = implode(',',$str_tokens);
+                $p->preco = $preco_format;
+            }else{
+                $p->preco = '0,00';
             }
-            $p->merge(['preco' => implode(',',$str_tokens)]);
         }
+
+
 
         return view('produtos',['products' => $products]);
     }
