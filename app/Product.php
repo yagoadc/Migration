@@ -9,20 +9,18 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    
-    protected $primaryKey = 'product_id';  //como não chamei minha PK de "id", preciso indicar para o Eloquent qual é minha PK
+    protected $fillable = ['nome','preco','estoque','provider_id'];
 
-    protected $fillable = ['nome','preco',]; //apenas nome e preço são mass assignable
-
-    
     protected $dates = ['deleted_at'];
 
 
-//Não apaguem o que está abaixo
+    public function fornecedor(){
+        return $this->belongsTo('App\Provider', 'provider_id');
+    }
 
-//    public function fornecedor(){
-//        return $this->belongsTo('App\Provider', 'product_id');
-//    }
+    public function lojas(){
+        return $this->belongsToMany('App\Store')->withPivot('preco', 'estoque');;
+    }
 
 
 }

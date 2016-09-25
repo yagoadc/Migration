@@ -11,8 +11,10 @@
     <title>Produtos</title>
 
     <!-- Styles -->
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('imports/tether.min.css')}}">
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
@@ -21,6 +23,9 @@
                 'csrfToken' => csrf_token(),
         ]); ?>
     </script>
+
+    @yield('styles')
+
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -81,9 +86,17 @@
 
 @yield('content')
 
-<!-- Scripts -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-<script src="{{asset('js/app.js')}}"></script>
+
+<script src="{{asset('imports/jquery-3.1.1.min.js')}}"></script>
+
+@if(View::hasSection('script-tooltip'))
+    <script src="{{asset('imports/tether.min.js')}}"></script>
+    <script src="{{asset('imports/bootstrap.min.js')}}"></script>
+    @yield('script-tooltip')
+@else
+    <script src="{{asset('imports/bootstrap.min.js')}}"></script>
+@endif
+
+@yield('scripts')
 </body>
 </html>
