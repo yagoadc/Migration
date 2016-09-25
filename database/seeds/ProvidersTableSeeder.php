@@ -13,6 +13,6 @@ class ProvidersTableSeeder extends Seeder
     public function run()
     {
         DB::table('providers')->truncate();
-        factory(App\Provider::class, 5)->create();
+        factory(App\Provider::class, 15)->create();
     }
 }

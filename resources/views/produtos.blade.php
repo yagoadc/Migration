@@ -20,7 +20,7 @@
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Lojas</h4>
+                        <h4 class="modal-title" id="myModalLabel">Lojas vendendo {{$p->nome}}</h4>
                     </div>
                     <div class="modal-body edit-content container-fluid">
 
