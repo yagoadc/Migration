@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/produtos', 'ProductsController@index')->name('produtos');
+
+Route::resource('estudantes', 'StudentController');

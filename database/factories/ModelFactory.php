@@ -60,3 +60,4 @@ $factory->define(App\ProductStore::class, function (Faker\Generator $faker){
         'estoque' => random_int(0, 1000)
     ];
 });
+

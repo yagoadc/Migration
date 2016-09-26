@@ -80,6 +80,7 @@
 
                 <div class="links">
                     <a href="{{route('produtos')}}">Produtos</a>
+                    <a href="{{route('estudantes.index')}}">Estudantes</a>
                 </div>
             </div>
         </div>

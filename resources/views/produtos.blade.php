@@ -13,6 +13,10 @@
     </style>
 @endsection
 
+@section('title')
+    Produtos
+@endsection
+
 
 @section('content')
     @foreach($products as $p)
