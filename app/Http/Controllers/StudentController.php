@@ -79,7 +79,28 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $s = \App\Student::find($id);
+
+
+        if($s->dre == $request->dre){
+            $this->validate($request,[
+                'nome' => 'required',
+            ]);
+
+            $s->update(['nome' => $request->nome]);
+
+            return back()->with(['success' => 'Estudante editado com sucesso.' ]);
+        }
+
+
+        $this->validate($request,[
+            'nome' => 'required',
+            'dre' => 'required|min:9|max:9|unique:students'
+        ]);
+
+        $s->update($request->all());
+
+        return back()->with(['success' => 'Estudante criado com sucesso.' ]);
     }
 
     /**

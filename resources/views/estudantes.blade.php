@@ -45,6 +45,38 @@
         </div>
     </div>
 
+    @foreach($students as $s)
+        <div id="modalEdit{{$s->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalLabel">Criar Estudante</h4>
+                    </div>
+                    <form action="{{action('StudentController@update', ['estudante' => $s->id])}}" method="POST">
+                        <div class="modal-body edit-content container-fluid">
+                            {{csrf_field()}}
+                            {{method_field('PUT')}}
+
+                            <div class="form-group">
+                                <label for="nome_edit">Nome</label>
+                                <input type="text" class="form-control" name="nome" id="nome_edit" value="{{$s->nome}}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dre_edit">DRE</label>
+                                <input type="text" name="dre" id="dre_edit" class="form-control" value="{{$s->dre}}">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary text-right">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
 
     <div class="container">
 
@@ -75,17 +107,21 @@
         <table class="table table-striped">
             <thead>
                 <tr class="row">
-                    <th>Nome</th>
-                    <th>DRE</th>
-                    <th></th>
+                    <th class="col-xs-7">Nome</th>
+                    <th class="col-xs-3">DRE</th>
+                    <th class="col-xs-1"></th>
+                    <th class="col-xs-1"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($students as $s)
                     <tr class="row">
-                        <td>{{$s->nome}}</td>
-                        <td>{{$s->dre}}</td>
-                        <td class="text-right">
+                        <td class="col-xs-7">{{$s->nome}}</td>
+                        <td class="col-xs-3">{{$s->dre}}</td>
+                        <td class="col-xs-1">
+                            <button class="btn btn-primary" type="button" data-href="#modal{{$s->id}}" data-toggle="modal" data-target="#modalEdit{{$s->id}}">Editar</button>
+                        </td>
+                        <td class="col-xs-1 text-right">
                             <form action="{{action('StudentController@destroy',['estudante' => $s->id])}}" method="POST">
                                 {{method_field('DELETE')}}
                                 {{csrf_field()}}

@@ -45,7 +45,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker){
 $factory->define(App\Store::class, function (Faker\Generator $faker){
     return [
         'nome' => $faker->words(2, true),
-        'cep' => $faker->postcode
+        'cep' => $faker->postcode,
     ];
 });
 
@@ -60,4 +60,24 @@ $factory->define(App\ProductStore::class, function (Faker\Generator $faker){
         'estoque' => random_int(0, 1000)
     ];
 });
+
+$factory->define(App\Student::class, function (Faker\Generator $faker){
+   return [
+       'nome' => $faker->name,
+       'dre' => strval($faker->randomNumber(9))
+   ];
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
