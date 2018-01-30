@@ -15,6 +15,7 @@ class Kernel extends HttpKernel
      */
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
+        \App\Http\Middleware\CheckValue::class,
     ];
 
     /**
@@ -23,6 +24,12 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middlewareGroups = [
+        'produtos' => [
+            \App\Http\Middleware\CheckValue::class,
+            \App\Http\Middleware\Example::class,
+            \App\Http\Middleware\OtherExample::class,
+        ],
+
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -46,6 +53,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'Value' => \App\Http\Middleware\CheckValue::class,
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,

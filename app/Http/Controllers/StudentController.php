@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 class StudentController extends Controller
+
 {
     /**
      * Função que retorna a view principal do recurso Estudante.
@@ -124,7 +125,7 @@ class StudentController extends Controller
      * A $id é passada por GET. 
      * (no caso, o método que o laravel usa para resource controllers e que é o que vocês verão pelo route:list 
      * é o DELETE)
-     * Para mais sobre resource controllers: https://laravel.com/docs/5.3/controllers#resource-controllers
+     * Para mais sobre resource controllers: https://laravel.com/docs/5.4/controllers#resource-controllers
      */
     public function destroy($id)
     {
